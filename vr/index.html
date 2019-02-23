@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        header {
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.767), rgba(0, 0, 0, 0.822)), url(https://images.pexels.com/photos/1056553/pexels-photo-1056553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
+            background-size: 1400px 700px;
+            position: relative;
+            background-position: center;
+            margin-top: 0%;
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            width: 60%;
+            margin: 4em auto;
+            font-size: 30px;
+            line-height: 30px;
+            text-align: center;
+            margin-left: 20%;
+            margin-top: 20%;
+            position: absolute;
+            font-family: 'Poiret One', cursive;
+            color: #fff;
+        }
+
+        .logo {
+            line-height: 60px;
+            position: fixed;
+            float: left;
+            margin: 16px 46px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 25px;
+            letter-spacing: 2px;
+            font-family: 'Poiret One', cursive;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            line-height: 60px;
+            z-index: 5;
+        }
+
+        nav ul {
+            line-height: 60px;
+            list-style: none;
+            background: rgba(0, 0, 0, 0);
+            overflow: hidden;
+            color: #fff;
+            padding: 0;
+            text-align: right;
+            margin: 0;
+            padding-right: 40px;
+            transition: 1s;
+        }
+
+        nav.black ul {
+            background: #000;
+        }
+
+        nav ul li {
+            display: inline-block;
+            padding: 10px 30px;
+            ;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .menu-icon {
+            line-height: 60px;
+            width: 100%;
+            background: #000;
+            text-align: right;
+            box-sizing: border-box;
+            padding: 15px 24px;
+            cursor: pointer;
+            color: #fff;
+            display: none;
+        }
+
+        @media(max-width: 786px) {
+
+            .logo {
+                position: fixed;
+                top: 0;
+                margin-top: 16px;
+                font-family: 'Poiret One', cursive;
+            }
+
+            nav ul {
+                max-height: 0px;
+                background: #000;
+            }
+
+            nav.black ul {
+                background: #000;
+            }
+
+            .showing {
+                max-height: 34em;
+            }
+
+            nav ul li {
+                box-sizing: border-box;
+                width: 100%;
+                padding: 24px;
+                text-align: center;
+
+            }
+
+            nav ul li:hover {
+                color: rgb(226, 142, 15);
+
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+        }
+
+        .sect {
+            margin: 0 auto;
+            text-align: center;
+            display: table;
+            vertical-align: middle;
+        }
+
+        .sect>div {
+            display: table-cell;
+            vertical-align: middle;
+            color: black;
+        }
+
+        .piesite {
+            display: inline-block;
+            position: relative;
+            width: 2.5em;
+            height: 2.5em;
+            font-size: 6em;
+            cursor: default;
+            -webkit-box-sizing: p;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .percent {
+            position: absolute;
+            top: 1.1em;
+            left: -4%;
+            width: 100%;
+            font-size: .3em;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .piesite>.percent .dec {
+            font-size: 0.8em;
+            margin-right: 57%;
+        }
+
+        .piesite>#slice {
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            clip: rect(0px, 1em, 1em, 0.5em);
+        }
+
+        .piesite>#slice.gt50 {
+            clip: rect(auto, auto, auto, auto);
+        }
+
+        .piesite>#slice>.pie {
+            position: absolute;
+            border: .1em solid #444;
+            width: .8em;
+            height: .8em;
+            clip: rect(0em, 0.5em, 1em, 0em);
+            border-radius: 0.5em;
+        }
+
+        li.design .piesite>#slice>.pie {
+            border-color: #df6c4f;
+        }
+
+        li.creativity .piesite>#slice>.pie {
+            border-color: #3c948b;
+        }
+
+        li.usability .piesite>#slice>.pie {
+            border-color: #ecd06f;
+        }
+
+        li.content .piesite>#slice>.pie {
+            border-color: #1a99aa;
+        }
+
+        .piesite>#slice>.pie.fill {
+            -webkit-transform: rotate(180deg) !important;
+            transform: rotate(180deg) !important;
+        }
+
+        .piesite.fill>.percent {
+            display: none;
+        }
+
+        .piesite:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: .1em;
+            left: .1em;
+            width: .8em;
+            height: .8em;
+            background: #eee;
+            border-radius: 100%;
+            z-index: 1;
+        }
+
+        .piesite:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 1em;
+            height: 1em;
+            border-radius: .5em;
+            opacity: .5;
+            z-index: 0;
+        }
+
+        li.design .piesite:before {
+            background: #df6c4f;
+        }
+
+        li.creativity .piesite:before {
+            background: #3c948b;
+        }
+
+        li.usability .piesite:before {
+            background: #ecd06f;
+        }
+
+        li.content .piesite:before {
+            background: #1a99aa;
+        }
+
+        li.total .piesite:before {
+            background: #cfd1d0;
+        }
+
+        .box-piesite ul li {
+            float: left;
+            /* margin-right: 3%; */
+            /* margin-left: -10%; */
+            list-style: none;
+            /* width:400%; */
+        }
+
+        .box-piesite ul h5 {
+            margin-right: 63%;
+            margin-top: -57% !important;
+        }
+
+        .sect ul {
+            margin-top: 0%;
+            padding-bottom: 5%;
+        }
+
+        #about {
+            padding-top: 1%;
+            color: #000 !important;
+            text-align: center;
+            background-image: linear-gradient(rgba(132, 139, 30, 0.199), rgba(179, 158, 40, 0.39)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIOunnBhH8eHJeGviTxTccOZv--C2m7N51x9aSQ6LNfZJAbfGW');
+            padding-bottom: 5%;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        .cta-100 {
+            margin-top: 0%;
+            padding-top: 7%;
+            background-image: linear-gradient(rgba(161, 146, 7, 0.39), rgba(255, 255, 255, 0.192)), url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIOunnBhH8eHJeGviTxTccOZv--C2m7N51x9aSQ6LNfZJAbfGW');
+        }
+
+        .col-md-4 {
+            padding-bottom: 20px;
+        }
+
+        .white {
+            color: #fff !important;
+        }
+
+        .mt {
+            float: left;
+            margin-top: -20px;
+            padding-top: 20px;
+        }
+
+        .bg-blue-ui {
+            background-color: #708198 !important;
+        }
+
+        figure img {
+            width: 300px;
+        }
+
+        #blogCarousel {
+            padding-bottom: 100px;
+        }
+
+        .blog .carousel-indicators {
+            left: 0;
+            top: -50px;
+            height: 50%;
+        }
+
+
+        /* The colour of the indicators */
+
+        .blog .carousel-indicators li {
+            background: #708198;
+            border-radius: 50%;
+            width: 8px;
+            height: 8px;
+        }
+
+        .blog .carousel-indicators .active {
+            background: #0fc9af;
+        }
+
+
+
+
+        .item-carousel-blog-block {
+            outline: medium none;
+            padding: 15px;
+        }
+
+        .item-box-blog {
+            border: 1px solid #dadada;
+            text-align: center;
+            z-index: 4;
+            padding: 20px;
+        }
+
+        .item-box-blog-image {
+            position: relative;
+        }
+
+        .item-box-blog-image figure img {
+            width: 100%;
+            height: auto;
+        }
+
+        .item-box-blog-date {
+            position: absolute;
+            z-index: 5;
+            padding: 4px 20px;
+            top: -20px;
+            right: 8px;
+            background-color: #41cb52;
+        }
+
+        .item-box-blog-date span {
+            color: #fff;
+            display: block;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .item-box-blog-date span.mon {
+            font-size: 18px;
+            z-index: 0 !important;
+            position: relative;
+        }
+
+        .item-box-blog-date span.day {
+            font-size: 16px;
+        }
+
+        .item-box-blog-body {
+            padding: 10px;
+        }
+
+        .item-heading-blog a h5 {
+            margin: 0;
+            line-height: 1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .item-box-blog-heading a {
+            text-decoration: none;
+        }
+
+        .item-box-blog-data p {
+            font-size: 13px;
+        }
+
+        .item-box-blog-data p i {
+            font-size: 12px;
+        }
+
+        .item-box-blog-text {
+            max-height: 100px;
+            overflow: hidden;
+        }
+
+        .mt-10 {
+            float: left;
+            margin-top: -10px;
+            padding-top: 10px;
+        }
+
+        .btn.bg-blue-ui.white.read {
+            cursor: pointer;
+            padding: 4px 20px;
+            float: left;
+            margin-top: 10px;
+        }
+
+        .btn.bg-blue-ui.white.read:hover {
+            box-shadow: 0px 5px 15px inset #4d5f77;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 3%;
+            font-family: 'Poiret One', cursive;
+        }
+
+        /* Footer */
+        @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+        section {
+            padding: 60px 0;
+        }
+
+        section .section-title {
+            text-align: center;
+            color: #d5aa6d;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        #footer {
+            background: #d5aa6d !important;
+        }
+
+        #footer h5 {
+            padding-left: 10px;
+            border-left: 3px solid #eeeeee;
+            padding-bottom: 6px;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        #footer a {
+            color: #ffffff;
+            text-decoration: none !important;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        #footer ul.social li {
+            padding: 3px 0;
+        }
+
+        #footer ul.social li a i {
+            margin-right: 5px;
+            font-size: 25px;
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+        }
+
+        #footer ul.social li:hover a i {
+            font-size: 30px;
+            margin-top: -10px;
+        }
+
+        #footer ul.social li a,
+        #footer ul.quick-links li a {
+            color: #ffffff;
+        }
+
+        #footer ul.social li a:hover {
+            color: #eeeeee;
+        }
+
+        #footer ul.quick-links li {
+            padding: 3px 0;
+            -webkit-transition: .5s all ease;
+            -moz-transition: .5s all ease;
+            transition: .5s all ease;
+        }
+
+        #footer ul.quick-links li:hover {
+            padding: 3px 0;
+            margin-left: 5px;
+            font-weight: 700;
+        }
+
+        #footer ul.quick-links li a i {
+            margin-right: 5px;
+        }
+
+        #footer ul.quick-links li:hover a i {
+            font-weight: 700;
+        }
+
+        @media (max-width:767px) {
+            #footer h5 {
+                padding-left: 0;
+                border-left: transparent;
+                padding-bottom: 0px;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Virtual Legal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="wrapper">
+            <header>
+                <nav>
+                    <div class="menu-icon">
+                        <i class="fa fa-bars fa-2x"></i>
+                    </div>
+                    <a href="#">
+                        <div class="logo">
+                            VIRTUAL LEGAL
+                        </div>
+                    </a>
+                    <div class="menu">
+                        <ul>
+                            <a href="#">
+                                <li style=" color: #fff !important;">HOME</li>
+                            </a>
+                            <a href="#about" style=" color: #fff !important;">
+                                <li>ABOUT</li>
+                            </a>
+                            <a href="#solutions" style=" color: #fff !important;">
+                                <li>SOLUTIONS</li>
+                            </a>
+                            <a href="#footer" style=" color: #fff !important;">
+                                <li>CONTACT</li>
+                            </a>
+
+                        </ul>
+                    </div>
+                </nav>
+                <div class="content">
+                    <h1>Virtual Legal Learning<br />
+                    </h1>
+                    <p>Becoming Practise Ready.</p>
+                    <a class="btn btn-outline-primary" href="a-saturday-night/" data-toggle="tooltip" data-placement="top"
+                        title="Move to Court">
+                        Login.
+                    </a>
+                    <a class="btn btn-outline-success" href="vr.html" data-toggle="tooltip" data-placement="top"
+                        title="Move to Court">
+                        Move Virtual Court.
+                    </a>
+                </div>
+            </header>
+            <div id="about">
+                <h2>ABOUT</h2>
+                <section class="sect">
+                    <div>
+                        <div class="box-piesite">
+                            <ul>
+                                <li class="design">
+                                    <div class="piesite" id="pie_0" data-pie="2.04"></div>
+                                    <br>
+                                    <h5 style="text-justify:center;">Of grades are not practise after school</h5>
+                                </li>
+                                <li class="usability">
+                                    <div class="piesite" id="pie_2" data-pie="5.02"></div>
+                                    <br>
+                                    <h5 style="text-justify:center;">Of grades are met</h5>
+                                </li>
+
+                                <li class="creativity">
+                                    <div class="piesite" id="pie_1" data-pie="2.04"></div>
+                                    <br>
+                                    <h5 style="text-justify:center;">Jobs exist for practising lawyers</h5>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </section>
+                <div class="container">
+                    <h5 style="text-justify:center; text-align: center;"> Lorem ipsum dolor sit amet consectetur
+                        adipisicing elit.Similique tenetur autem commodi repellendus soluta rem nihil, eveniet officia
+                        quasi, mollitia dignissimos laudantium et quae dolorem maiores, suscipit enim. Reiciendis,
+                        ullam.</h5>
+                </div>
+            </div>
+            <div class="cta-100" id="solutions">
+                <div class="container ">
+                    <h2>SOLUTIONS</h2>
+                    <div class="row blog">
+                        <div class="col-md-12">
+                            <div id="blogCarousel" class="carousel slide container-blog" data-ride="carousel">
+
+                                <!-- Carousel items -->
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <div class="item-box-blog">
+                                                    <div class="item-box-blog-image">
+                                                        <!--Date-->
+                                                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">FREE
+                                                                PLAN </span> </div>
+                                                        <!--Image-->
+                                                        <figure> <img alt="" src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="item-box-blog-body">
+                                                        <!--Heading-->
+                                                        <div class="item-box-blog-heading">
+
+                                                            <h5>Plan Details</h5>
+
+                                                        </div>
+                                                        <!--Data-->
+                                                        <div class="item-box-blog-data" style="padding: px 15px;">
+
+                                                        </div>
+                                                        <!--Text-->
+                                                        <div class="item-box-blog-text">
+                                                            <p>Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum
+                                                                dolor sit amet, consectetuer adipiscing. Lorem
+                                                                ipsum
+                                                                dolor sit amet, adipiscing. Lorem ipsum dolor sit
+                                                                amet,
+                                                                adipiscing. Lorem ipsum dolor sit amet,
+                                                                consectetuer
+                                                                adipiscing. Lorem ipsum dolor.</p>
+                                                        </div>
+                                                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">0$</a>
+                                                        </div>
+                                                        <!--Read More Button-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="item-box-blog">
+                                                    <div class="item-box-blog-image">
+                                                        <!--Date-->
+                                                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">BASIC
+                                                                PLAN </span> </div>
+                                                        <!--Image-->
+                                                        <figure> <img alt="" src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="item-box-blog-body">
+                                                        <!--Heading-->
+                                                        <div class="item-box-blog-heading">
+
+                                                            <h5>Plan Details</h5>
+
+                                                        </div>
+                                                        <!--Data-->
+                                                        <div class="item-box-blog-data" style="padding: px 15px;">
+
+                                                        </div>
+                                                        <!--Text-->
+                                                        <div class="item-box-blog-text">
+                                                            <p>Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum
+                                                                dolor sit amet, consectetuer adipiscing. Lorem
+                                                                ipsum
+                                                                dolor sit amet, adipiscing. Lorem ipsum dolor sit
+                                                                amet,
+                                                                adipiscing. Lorem ipsum dolor sit amet,
+                                                                consectetuer
+                                                                adipiscing. Lorem ipsum dolor.</p>
+                                                        </div>
+                                                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">50$
+                                                            </a> </div>
+                                                        <!--Read More Button-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="item-box-blog">
+                                                    <div class="item-box-blog-image">
+                                                        <!--Date-->
+                                                        <div class="item-box-blog-date bg-blue-ui white"> <span class="mon">PREMIUM
+                                                                PLAN
+
+                                                            </span> </div>
+                                                        <!--Image-->
+                                                        <figure> <img alt="" src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="item-box-blog-body">
+                                                        <!--Heading-->
+                                                        <div class="item-box-blog-heading">
+
+                                                            <h5>Plan Details</h5>
+
+                                                        </div>
+                                                        <!--Data-->
+                                                        <div class="item-box-blog-data" style="padding: px 15px;">
+
+                                                        </div>
+                                                        <!--Text-->
+                                                        <div class="item-box-blog-text">
+                                                            <p>Lorem ipsum dolor sit amet, adipiscing. Lorem ipsum
+                                                                dolor sit amet, consectetuer adipiscing. Lorem
+                                                                ipsum
+                                                                dolor sit amet, adipiscing. Lorem ipsum dolor sit
+                                                                amet,
+                                                                adipiscing. Lorem ipsum dolor sit amet,
+                                                                consectetuer
+                                                                adipiscing. Lorem ipsum dolor.</p>
+                                                        </div>
+                                                        <div class="mt"> <a href="#" tabindex="0" class="btn bg-blue-ui white read">100$
+                                                            </a> </div>
+                                                        <!--Read More Button-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--.row-->
+                                    </div>
+                                    <!--.item-->
+
+                                </div>
+                                <!--.carousel-inner-->
+                            </div>
+                            <!--.Carousel-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <section id="footer">
+                <div class="container">
+                    <div class="row text-center text-xs-center text-sm-left text-md-left">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <h5>Details</h5>
+                            <p class="list-unstyled quick-links">
+                                <p style="color:#fff">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ad aliquam delectus
+                                    omnis dolore vel recusandae. Nesciunt enim perspiciatis repellat tempora itaque
+                                    eum, at
+                                    expedita consequatur obcaecati dolorum, asperiores voluptas?
+                                </p>
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <h5>Quick links</h5>
+                            <ul class="list-unstyled quick-links">
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                                <li><a href="#about"><i class="fa fa-angle-double-right"></i>About</a></li>
+                                <li><a href="#solutions"><i class="fa fa-angle-double-right"></i>Solutions</a></li>
+                                <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                                
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <h5>Contacts</h5>
+                            <ul class="list-unstyled quick-links">
+                                <li><a href="javascript:void();"><i class="fa fa-phone"></i>+254 0700 000 000</a></li>
+                                <li><a href="javascript:void();"><i class="fa fa-phone"></i>+254 0723 000 000</a></li>
+                                <li><a href="javascript:void();"><i class="fa fa-envelope"></i>lawtech@gmail.com</a></li>
+                                <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Contacts</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                            <ul class="list-unstyled list-inline social text-center">
+                                <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-instagram"></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+                            </ul>
+                        </div>
+                        </hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+
+                            <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com"
+                                    target="_blank">Lawyer In Tech</a></p>
+                        </div>
+                        </hr>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        <script>
+            
+            $(document).ready(function () {
+                $(".menu-icon").on("click", function () {
+                    $("nav ul").toggleClass("showing");
+                });
+            });
+
+            // Scrolling Effect
+
+            $(window).on("scroll", function () {
+                if ($(window).scrollTop()) {
+                    $('nav').addClass('black');
+                } else {
+                    $('nav').removeClass('black');
+                }
+            })
+
+            function drawTimer(c, a) {
+                $("#pie_" + c).html('<div class="percent"></div><div id="slice"' + (a > 5 ? ' class="gt50"' : "") +
+                    '><div class="pie"></div>' + (a > 5 ? '<div class="pie fill"></div>' : "") + "</div>");
+                var b = 360 / 10 * a;
+                $("#pie_" + c + " #slice .pie").css({
+                    "-moz-transform": "rotate(" + b + "deg)",
+                    "-webkit-transform": "rotate(" + b + "deg)",
+                    "-o-transform": "rotate(" + b + "deg)",
+                    transform: "rotate(" + b + "deg)"
+                });
+                a = Math.floor(a * 100) / 100;
+                arr = a.toString().split(".");
+                intPart = arr[0];
+                dec = arr[1];
+                if (!dec > 0) {
+                    dec = 0
+                }
+                $("#pie_" + c + " .percent").html('<span class="int">' + intPart + '</span><span class="dec">.' + dec +
+                    "</span>")
+            }
+
+            function stoppie(d, b) {
+                var c = (timerFinish - (new Date().getTime())) / 1000;
+                var a = 10 - ((c / timerSeconds) * 10);
+                a = Math.floor(a * 100) / 100;
+                if (a <= b) {
+                    drawTimer(d, a)
+                } else {
+                    b = $("#pie_" + d).data("pie");
+                    arr = b.toString().split(".");
+                    $("#pie_" + d + " .percent .int").html(arr[0]);
+                    $("#pie_" + d + " .percent .dec").html("." + arr[1])
+                }
+            }
+            $(document).ready(function () {
+                timerSeconds = 3;
+                timerFinish = new Date().getTime() + (timerSeconds * 1000);
+                $(".piesite").each(function (a) {
+                    pie = $("#pie_" + a).data("pie");
+                    timer = setInterval("stoppie(" + a + ", " + pie + ")", 0)
+                })
+            });
+
+
+
+            "use strict";
+
+            ! function () {
+                var t = window.driftt = window.drift = window.driftt || [];
+                if (!t.init) {
+                    if (t.invoked) return void(window.console && console.error && console.error(
+                        "Drift snippet included twice."));
+                    t.invoked = !0, t.methods = ["identify", "config", "track", "reset", "debug", "show", "ping",
+                            "page", "hide", "off", "on"
+                        ],
+                        t.factory = function (e) {
+                            return function () {
+                                var n = Array.prototype.slice.call(arguments);
+                                return n.unshift(e), t.push(n), t;
+                            };
+                        }, t.methods.forEach(function (e) {
+                            t[e] = t.factory(e);
+                        }), t.load = function (t) {
+                            var e = 3e5,
+                                n = Math.ceil(new Date() / e) * e,
+                                o = document.createElement("script");
+                            o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src =
+                                "https://js.driftt.com/include/" + n + "/" + t + ".js";
+                            var i = document.getElementsByTagName("script")[0];
+                            i.parentNode.insertBefore(o, i);
+                        };
+                }
+            }();
+            drift.SNIPPET_VERSION = '0.3.1';
+            drift.load('h5mny3czs7ba');
+        </script>
+</body>
+
+</html>
