@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>law learning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <script src="main.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/data.js"></script>
+</head>
+<br>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <a class="navbar-brand" href="#">
+        <img src="https://static.turbosquid.com/Preview/2014/05/12__21_45_00/01.jpg15e40a8d-63a3-4468-bc03-d52af293ded8Original.jpg"
+          alt="Courtroom" height="40" width="40">
+      </a> <span>LAWLEARN</span>
+    </div>
+    <a href="#" class="nav-trigger"><span></span></a>
+  </div>
+  <div class="side-nav">
+    <div class="logo">
+      <i class="fa fa-search"></i>
+      <span>Virtual Learning</span>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="/vr/">
+            <span><i class="fa fa-user"></i></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="/vr/cases.html">
+
+            <span><i class="fa fa-envelope"></i></span>
+            <span>Cases</span>
+          </a>
+        </li>
+        <li class="active">
+          <a href="#">
+            <span><i class="fa fa-bar-chart"></i></span>
+            <span>Classmates</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span><i class="fa fa-credit-card-alt"></i></span>
+            <span>Forum</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+
+            <span><i class="fa fa-envelope"></i></span>
+            <span onclick="myFunction()">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a class="btn btn-outline-success" id="vrc"href ="/vr/vr.html" data-toggle="tooltip" data-placement="top" title="Move to Court">
+            Visit Virtual Court.
+        </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="main-content">
+    <div class="title" style="text-align:center">
+      Criminal Cases
+    </div>
+    <!--  -->
+    <div class="main" style="color:white">
+      <br>
+      <a href="/vr/">
+        <div class="card border-primary mb-3" style="max-width: 20rem;">
+          <div class="card-header">Robbery with Violence</div>
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-text">Facts of the case
+              On 20th March 2005 at about 7pm, Sebastian Munene, a teacher at Village Primary School walked out of
+              young men. One of the young men asked him for Kshs 20 saying he had not eaten since morning. Sebastian
+              gave him Ksh 100 as he was giving out the money,,,</p>
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="card border-secondary mb-3" style="max-width: 20rem;">
+          <div class="card-header">Murder Case</div>
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-text">Ezekiel Kagiri Njue was arraigned at a Nakuru court for doing the unthinkable.
+
+              It is alleged on March 11 he used a belt to strangle his four-year-old son to death.
+
+              What followed prompted the courts to have him undergo a psychiatric test to establish if he is mentally
+              stable..</p>
+          </div>
+        </div>
+      </a>
+      <a href="">
+        <div class="card border-success mb-3" style="max-width: 20rem;">
+          <div class="card-header">Rape Case</div>
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <p class="card-text">Rape can be categorized in different ways: for example, by reference to the situation
+              in which it occurs, by the identity or characteristics of the victim, and by the identity or
+              characteristics of the perpetrator. These categories are referred to as types of rape.</p>
+          </div>
+        </div>
+      </a>
+
+      <div class="widget">
+        <div class="title">Profile Picture</div>
+        <img id="blah" src="#" alt="your image" />
+
+        <div class="widget">
+          <div class="navbar-brand">
+            <div class="logo">
+              <i class="fa fa-search"></i>
+              <span>Profile </span>
+            </div>
+            <nav>
+              <ul>
+                <li>
+                  <a href="#">
+                    <span><i class="fa fa-user"></i></span>
+                    <span>Name</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+
+                    <span><i class="fa fa-envelope"></i></span>
+                    <span>points</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+
+                    <span><i class="fa fa-sign-out" style="font-size:28px;color:blue"></i></span>
+                    <span>logout</span>
+                  </a>
+                </li>
+                <input type='file' onchange="readURL(this);" />
+                <!-- <img id="blah" src="#" alt="your image" /> -->
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="overlay-image">
+              <img class="me" src="images/cri.jpg" alt="Alt text" />
+              
+              <div class="hover">
+               <div class="text">Criminal Case</div>
+              </div>
+             </a></div>
+        </div> -->
+  </div>
+ 
+  </div>
+  <script>
+    $(document).ready(function () {
+      $('.nav-trigger').click(function () {
+        $('.side-nav').toggleClass('visible');
+      });
+    });
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah')
+            .attr('src', e.target.result)
+            .width(150)
+            .height(200);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function myFunction() {
+      var dots = document.getElementById("dots");
+      var moreText = document.getElementById("more");
+      var btnText = document.getElementById("myBtn");
+
+      if (dots.style.display === "none") {
+        dots.style.display = "inline";
+        btnText.innerHTML = "Read more";
+        moreText.style.display = "none";
+      } else {
+        dots.style.display = "none";
+        btnText.innerHTML = "Read less";
+        moreText.style.display = "inline";
+      }
+    }
+
+    $(document).ready(function () {
+
+      $('div').click(function (e) {
+        e.preventDefault();
+        $('div#me div').hide();
+        $('div#me div').eq($(this).index()).show();
+      });
+
+    });
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Source Sans Pro', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+
+    .header {
+      position: absolute;
+      width: 100%;
+      z-index: 3;
+      height: 44px;
+      background-color: #fff;
+      border-bottom: 3px;
+    }
+
+    /* logo in header(mobile version) and side-nav (tablet & desktop) */
+    .logo {
+      height: 44px;
+      padding: 10px;
+      font-weight: 700;
+    }
+
+    .header .logo {
+      color: #233245;
+    }
+
+    .side-nav .logo {
+      color: #fff;
+    }
+
+    .header .logo {
+      float: left;
+    }
+
+    .header .logo {
+      height: 44px;
+      z-index: 1;
+      padding: 10px;
+      font-weight: 700;
+      color: #233245;
+    }
+
+    .logo i {
+      font-size: 22px;
+    }
+
+    .logo span {
+      margin-left: 5px;
+      text-transform: uppercase;
+    }
+
+    .nav-trigger {
+      position: relative;
+      float: right;
+      width: 20px;
+      height: 44px;
+      right: 30px;
+      display: block;
+    }
+
+    .nav-trigger span,
+    .nav-trigger span:before,
+    span:after {
+      width: 20px;
+      height: 2px;
+      position: absolute;
+    }
+
+    .nav-trigger span {
+      top: 50%;
+    }
+
+    .nav-trigger span:before,
+    .nav-trigger span:after {
+      content: '';
+    }
+
+    .nav-trigger span:before {
+      top: -6px;
+    }
+
+    .nav-trigger span:after {
+      top: 6px;
+    }
+
+    /* side navigation styles */
+    .side-nav {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background-color: #d5aa6b;
+      z-index: 1;
+      display: none;
+    }
+
+    .side-nav.visible {
+      display: block;
+    }
+
+    .side-nav ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .side-nav ul li {
+      padding: 16px 16px;
+      border-bottom: 1px;
+      position: relative;
+    }
+
+    .side-nav ul li.active:before {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+    }
+
+    .side-nav ul li a {
+      color: #fff;
+      display: block;
+      text-decoration: none;
+    }
+
+    .side-nav ul li i {
+      color: #0497df;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .side-nav ul li span:nth-child(2) {
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* main content styles */
+    .main-content {
+      padding: 40px;
+      margin-top: 0;
+      padding: 0;
+      padding-top: 44px;
+      height: 100%;
+      overflow: scroll;
+    }
+
+    .main-content .title {
+      background-color: #eef1f7;
+      border-bottom: 1px;
+      padding: 10px;
+      font-weight: 700;
+      color: #333;
+      font-size: 18px;
+    }
+
+    /* set element styles to fit tablet and higher(desktop) */
+    @media screen and (min-width: 600px) {
+      .header {
+        z-index: 1;
+      }
+
+      .header .logo {
+        display: none;
+      }
+
+      .nav-trigger {
+        display: none;
+      }
+
+      .nav-trigger span,
+      .nav-trigger span:before,
+      span:after {
+        background-color: #fff;
+      }
+
+      .side-nav {
+        display: block;
+        width: 70px;
+        z-index: 2;
+      }
+
+      .side-nav ul li span:nth-child(2) {
+        display: none;
+      }
+
+      .side-nav .logo i {
+        padding-left: 12px;
+      }
+
+      .side-nav .logo span {
+        display: none;
+      }
+
+      .side-nav ul li i {
+        font-size: 26px;
+      }
+
+      .side-nav ul li a {
+        text-align: center;
+      }
+
+      .main-content {
+        margin-left: 70px;
+      }
+    }
+
+    /* set element styles for desktop */
+    @media screen and (min-width: 800px) {
+      .side-nav {
+        width: 200px;
+      }
+
+      .side-nav ul li span:nth-child(2) {
+        display: inline-block;
+      }
+
+      .side-nav ul li i {
+        font-size: 16px;
+      }
+
+      .side-nav ul li a {
+        text-align: left;
+      }
+
+      .side-nav .logo i {
+        padding-left: 0;
+      }
+
+      .side-nav .logo span {
+        display: inline-block;
+      }
+
+      .main-content {
+        margin-left: 200px;
+      }
+    }
+
+    /* main box container */
+    .main {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .widget {
+      flex-basis: 300px;
+      flex-grow: 10;
+      height: 300px;
+      margin: 15px;
+      border-radius: 6px;
+      background-color: #ffffff;
+      position: relative;
+      width: 100px;
+    }
+
+    .widget .title {
+      border-bottom: 1px solid #dfe4ec;
+      padding: 10px;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      color: #617085;
+      font-weight: 600;
+    }
+
+    span {
+      text-align: center;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    #cri {
+      background-image: url('/images/cri.jpg')
+    }
+
+    .centered {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding-top: 40px;
+    }
+
+    button {
+      cursor: pointer;
+      outline: none;
+
+      &.outline {
+        position: relative;
+        z-index: 3;
+        background: transparent;
+        color: #1172c4;
+        font-size: 14px;
+        border-color: #1172c4;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 22px;
+        padding: 10px 40px;
+        text-transform: uppercase;
+        transition: all 0.2s linear;
+
+        a {
+          text-decoration: none;
+        }
+      }
+
+      &.outline:hover {
+        color: white;
+        background: #1172c4;
+        border-color: white;
+        transition: all 0.2s linear;
+      }
+
+      &.outline:active {
+        border-radius: 22px;
+      }
+
+      &.white-blue {
+        font-weight: 700;
+        color: #00aeef;
+        border-color: white;
+        background: white;
+      }
+
+      &.white-blue:hover {
+        color: white;
+        background: #00aeef;
+        border-color: white;
+      }
+
+      &.white-green {
+        font-weight: 700;
+        color: #7dc21e;
+        border-color: white;
+        background: white;
+      }
+
+      &.white-green:hover {
+        color: white;
+        background: #7dc21e;
+        border-color: white;
+      }
+
+      &.green-white {
+        font-weight: 700;
+        color: #7dc21e;
+        border-color: #7dc21e;
+        background: transparent;
+      }
+
+      &.green-white:hover {
+        color: white;
+        background: #7dc21e;
+        border-color: #7dc21e;
+      }
+
+      &.purple-white {
+        font-weight: 700;
+        color: #664e96;
+        border-color: #664e96;
+        background: transparent;
+      }
+
+      &.purple-white:hover {
+        color: white;
+        background: #664e96;
+        border-color: #664e96;
+      }
+
+      &.white-purple {
+        font-weight: 700;
+        color: #664e96;
+        border-color: white;
+        background: white;
+      }
+
+      &.white-purple:hover {
+        color: white;
+        background: #664e96;
+        border-color: white;
+      }
+    }
+
+    li {
+      list-style-type: none;
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: inherit;
+      transition: all .5s;
+    }
+
+    .btn-primary.btn-outline {
+      color: #428bca;
+    }
+
+    .btn-success.btn-outline {
+      color: white;
+    }
+
+    .btn-info.btn-outline {
+      color: #5bc0de;
+    }
+
+    .btn-warning.btn-outline {
+      color: #f0ad4e;
+    }
+
+    .btn-danger.btn-outline {
+      color: #d9534f;
+    }
+
+    .btn-primary.btn-outline:hover,
+    .btn-success.btn-outline:hover,
+    .btn-info.btn-outline:hover,
+    .btn-warning.btn-outline:hover,
+    .btn-danger.btn-outline:hover {
+      color: #fff;
+    }
+
+    .card-columns {
+      @include media-breakpoint-only(lg) {
+        column-count: 4;
+      }
+
+      @include media-breakpoint-only(xl) {
+        column-count: 5;
+      }
+    }
+
+    #more {
+      display: none;
+    }
+  </style>
+</body>
+
+</html>
